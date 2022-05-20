@@ -208,20 +208,20 @@
             </div>
             <div class="row justify-content-center">
                 <div class="col-md-6">
-                    <form>
+                    <form name="ayo-database-user">
                         <div class="mb-3">
                             <!-- <label for="nama" class="form-label">Nama</label> -->
-                            <input type="email" class="form-control" placeholder="Nama" id="nama"
+                            <input type="email" class="form-control" placeholder="Nama" id="nama" name="nama"
                                 aria-describedby="nama">
                         </div>
                         <div class="mb-3">
                             <!-- <label for="email" class="form-label">Email</label> -->
-                            <input type="email" class="form-control" placeholder="Email" id="email"
+                            <input type="email" class="form-control" placeholder="Email" id="email" name="email"
                                 aria-describedby="email">
                         </div>
                         <div class="mb-3">
                             <!-- <label for="floatingTextarea2">Pesan</label> -->
-                            <textarea class="form-control" placeholder="Tulis Pesan" id="floatingTextarea2"
+                            <textarea class="form-control" placeholder="Tulis Pesan" id="pesan" name="pesan"
                                 style="height: 100px"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Kirim</button>
@@ -250,7 +250,21 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous">
+    </script>
+
+<!-- ========= GOOGLE FORM -->
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbz1AhKYa9U6JDv4JXY4TEYpNf7M2Pms5hLAC7mZPqyaZsZdxvncNb-zxJIrmnLYw0yiQQ/exec'
+    const form = document.forms['ayo-database-user']
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => console.log('Success!', response))
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
 
 </body>
 
